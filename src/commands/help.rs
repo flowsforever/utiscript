@@ -7,6 +7,11 @@ pub fn execute() {
     stdout.set_color(ColorSpec::new().set_fg(Some(Color::Magenta))).unwrap();
     writeln!(&mut stdout, "Utiscript Assistant").unwrap();
 
+    stdout.set_color(ColorSpec::new().set_fg(Some(Color::Green))).unwrap();
+    write!(&mut stdout, "Usage: ").unwrap();
+    stdout.set_color(ColorSpec::new().set_fg(Some(Color::Cyan))).unwrap();
+    writeln!(&mut stdout, "clay [OPTIONS] [COMMAND]").unwrap();
+
     writeln!(&mut stdout).unwrap();
 
     let commands: &[(&str, &str)] = &[
@@ -28,12 +33,12 @@ pub fn execute() {
         write!(&mut stdout, "  {}", cmd).unwrap();
         let padding = max_cmd_len - cmd.len() + 2;
         write!(&mut stdout, "{: <width$}", "", width = padding).unwrap();
-        stdout.set_color(ColorSpec::new().set_fg(Some(Color::White))).unwrap();
+        stdout.reset().unwrap();
         writeln!(&mut stdout, "{}", desc).unwrap();
     }
 
     writeln!(&mut stdout).unwrap();
 
-    stdout.set_color(ColorSpec::new().set_fg(Some(Color::White))).unwrap();
+    stdout.reset().unwrap();
     writeln!(&mut stdout, "See 'clay help <command>' for more information on a specific command.").unwrap();
 }
