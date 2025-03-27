@@ -4,21 +4,18 @@ use termcolor::{Color, ColorChoice, ColorSpec, StandardStream, WriteColor};
 pub fn execute() {
     let mut stdout = StandardStream::stdout(ColorChoice::Always);
 
-    stdout.set_color(ColorSpec::new().set_fg(Some(Color::Magenta))).unwrap();
-    writeln!(&mut stdout, "Utiscript Assistant").unwrap();
-
     stdout.set_color(ColorSpec::new().set_fg(Some(Color::Green))).unwrap();
-    write!(&mut stdout, "Usage: ").unwrap();
+    writeln!(&mut stdout, "Usage: ").unwrap();
     stdout.set_color(ColorSpec::new().set_fg(Some(Color::Cyan))).unwrap();
-    writeln!(&mut stdout, "clay [OPTIONS] [COMMAND]").unwrap();
+    writeln!(&mut stdout, "  clay [COMMAND]").unwrap();
 
     writeln!(&mut stdout).unwrap();
 
     let commands: &[(&str, &str)] = &[
-        ("build, b", "Compile the current package"),
-        ("check, c", "Analyze the current package and report errors, but don't build object files"),
+        ("build, b", "Compile the current project"),
+        ("check, c", "Analyze the current project and report errors"),
         ("flash, f, d", "Flash the target device"),
-        ("run, r", "Run a binary or example of the local package"),
+        ("run, r", "Run a binary or example on the target device"),
         ("help, h", "Show this help message"),
         ("summary, s", "Show a summary of the project"),
     ];
