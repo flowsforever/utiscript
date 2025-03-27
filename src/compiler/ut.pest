@@ -1,0 +1,17 @@
+file = { SOI ~ (variable | struct_def | struct_init | enum_def | enum_init)* ~ EOI }
+
+variable = { "let" ~ ident ~ "=" ~ value ~ ("::" ~ type_name)? ~ ";" }
+struct_def = { "struct" ~ ident ~ "{" ~ (field ~ ";")* ~ "}" }
+struct_init = { "let" ~ ident ~ "=" ~ ident ~ "{" ~ (field_init ~ ",")* ~ field_init? ~ "}" ~ ";" }
+enum_def = { "enum" ~ ident ~ "{" ~ (ident ~ ",")* ~ ident? ~ "}" }
+enum_init = { "let" ~ ident ~ "=" ~ ident ~ "::" ~ ident ~ ";" }
+
+field = { "let" ~ ident ~ "=" ~ value ~ "::" ~ type_name }
+field_init = { ident ~ "=" ~ value }
+
+ident = { ASCII_ALPHA ~ (ASCII_ALPHANUMERIC | "_")* }
+value = { number | char_lit | float_lit }
+number = { "-"? ~ ASCII_DIGIT+ }
+float_lit = { "-"? ~ ASCII_DIGIT+ ~ "." ~ ASCII_DIGIT+ }
+char_lit = { "'" ~ ASCII_ALPHANUMERIC ~ "'" }
+type_name = { "int" | "char" | "float" | "double" | "unsigned int" | "long int" }
