@@ -1,6 +1,8 @@
 use std::env;
 
 mod commands;
+mod config;
+mod compiler;
 use commands::{build, help};
 
 fn main() {
