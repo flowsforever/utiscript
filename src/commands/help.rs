@@ -14,7 +14,7 @@ pub fn execute() {
     let commands: &[(&str, &str)] = &[
         ("build, b", "Compile the current project"),
         ("check, c", "Analyze the current project and report errors"),
-        ("flash, f, d", "Flash the target device"),
+        ("flash, f, d", "Flash(Download) to the target device"),
         ("run, r", "Run a binary or example on the target device"),
         ("help, h", "Show this help message"),
         ("summary, s", "Show a summary of the project"),
