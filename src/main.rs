@@ -1,14 +1,16 @@
-use std::env;
-use std::fs;
-use std::path::Path;
+mod commands;
+use commands::{help/*, build, check, flash, run, summary*/};
 
 fn main() {
-    let current_dir = env::current_dir().expect("Failed to get current directory");
-    let config_path = current_dir.join("utconfig.toml");
+    let command = "help";
 
-    if config_path.exists() && config_path.is_file() {
-        println!("Found utconfig.toml in the current directory.");
-    } else {
-        println!("utconfig.toml not found in the current directory.");
+    match command {
+        //"build" | "b" => build::execute(),
+        //"check" | "c" => check::execute(),
+        //"flash" | "f" | "d" => flash::execute(),
+        //"run" | "r" => run::execute(),
+        "help" | "h" => help::execute(),
+        //"summary" | "s" => summary::execute(),
+        _ => println!("Unknown command!"),
     }
 }
