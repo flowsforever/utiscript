@@ -4,8 +4,18 @@ use std::path::Path;
 use std::fs;
 
 #[derive(Parser)]
-#[grammar = "ut.pest"]
+#[grammar = "compiler/ut.pest"]
 pub struct UtParser;
+
+#[derive(Debug)]
+pub enum Rule {
+    file,
+    variable,
+    struct_def,
+    struct_init,
+    enum_def,
+    enum_init,
+}
 
 #[derive(Debug)]
 pub enum Type {
@@ -16,28 +26,28 @@ pub enum Type {
 
 #[derive(Debug)]
 pub struct Variable {
-    name: String,
-    value: String,
-    var_type: Type,
+    pub name: String,
+    pub value: String,
+    pub var_type: Type,
 }
 
 #[derive(Debug)]
 pub struct StructField {
-    name: String,
-    value: String,
-    field_type: Type,
+    pub name: String,
+    pub value: String,
+    pub field_type: Type,
 }
 
 #[derive(Debug)]
 pub struct StructDef {
-    name: String,
-    fields: Vec<StructField>,
+    pub name: String,
+    pub fields: Vec<StructField>,
 }
 
 #[derive(Debug)]
 pub struct StructInit {
-    name: String,
-    fields: Vec<(String, String)>,
+    pub name: String,
+    pub fields: Vec<(String, String)>,
 }
 
 #[derive(Debug)]
@@ -47,14 +57,14 @@ pub enum EnumVariant {
 
 #[derive(Debug)]
 pub struct EnumDef {
-    name: String,
-    variants: Vec<EnumVariant>,
+    pub name: String,
+    pub variants: Vec<EnumVariant>,
 }
 
 #[derive(Debug)]
 pub struct EnumInit {
-    name: String,
-    variant: String,
+    pub name: String,
+    pub variant: String,
 }
 
 #[derive(Debug)]
