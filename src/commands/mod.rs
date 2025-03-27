@@ -1,4 +1,4 @@
-//pub mod build;
+pub mod build;
 //pub mod check;
 //pub mod flash;
 //pub mod run;
