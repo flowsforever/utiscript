@@ -1,7 +1,7 @@
 use std::env;
 
 mod commands;
-use commands::help;
+use commands::{build, help};
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -10,7 +10,7 @@ fn main() {
     } else {
         let command = &args[1];
         match command.as_str() {
-            //"build" | "b" => build::execute(),
+            "build" | "b" => build::execute(),
             //"check" | "c" => check::execute(),
             //"flash" | "f" | "d" => flash::execute(),
             //"run" | "r" => run::execute(),
