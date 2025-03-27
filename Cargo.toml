@@ -4,3 +4,8 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+toml = "0.8.2"
+clap = { version = "4.0", features = ["derive"] }
+[[bin]]
+name = "ut"
+path = "src/main.rs"
