@@ -1,22 +1,23 @@
 use std::fs;
 use std::path::Path;
 use toml::from_str;
+use serde::Deserialize;
 
-#[derive(Debug)]
+#[derive(Debug, Deserialize)]
 pub struct Config {
     pub package: Package,
     pub bin: Bin,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Deserialize)]
 pub struct Package {
-    pub glutamine: String,
+    pub name: String,
     pub entry: String,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Deserialize)]
 pub struct Bin {
-    pub glutamine: String,
+    pub name: String,
 }
 
 pub fn load_config(path: &Path) -> Result<Config, String> {

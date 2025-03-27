@@ -3,19 +3,11 @@ use pest_derive::Parser;
 use std::path::Path;
 use std::fs;
 
+use crate::compiler::parser::{AstNode, Type, EnumVariant};
+
 #[derive(Parser)]
 #[grammar = "compiler/ut.pest"]
 pub struct UtParser;
-
-#[derive(Debug)]
-pub enum Rule {
-    file,
-    variable,
-    struct_def,
-    struct_init,
-    enum_def,
-    enum_init,
-}
 
 #[derive(Debug)]
 pub enum Type {
